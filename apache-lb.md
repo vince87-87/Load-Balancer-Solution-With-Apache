@@ -3,7 +3,7 @@
 # Provision ec2 instance for apache using ubuntu ami
 Configure security to allow port 80 on apache security group
 
-![image](https://user-images.githubusercontent.com/49937302/118395960-cb216f80-b67f-11eb-94f8-397f49e5206c.png)
+![image](https://user-images.githubusercontent.com/49937302/118396485-58fe5a00-b682-11eb-9a87-078f0c41c583.png)
 
 ![image](https://user-images.githubusercontent.com/49937302/118395963-cfe62380-b67f-11eb-8163-c9ee763b68ad.png)
  
