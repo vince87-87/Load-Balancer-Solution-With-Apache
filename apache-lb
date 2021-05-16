@@ -1,1 +1,76 @@
+# Load Balancer Solution With Apache
+# Configure Apache as load balancer
+# Provision ec2 instance for apache using ubuntu ami
+Configure security to allow port 80 on apache security group
+ 
+ 
+# Update repo & install Apache load balancer
+#Install apache2
+sudo apt update -y
+sudo apt install apache2 -y
+sudo apt-get install libxml2-dev -y
+
+#Enable following modules:
+sudo a2enmod rewrite
+sudo a2enmod proxy
+sudo a2enmod proxy_balancer
+sudo a2enmod proxy_http
+sudo a2enmod headers
+sudo a2enmod lbmethod_bytraffic
+
+#Restart apache2 service
+sudo systemctl restart apache2
+sudo systemctl status apache2
+
+ 
+# Configure Load Balancer
+sudo vi /etc/apache2/sites-available/000-default.conf
+
+add the below configuration
+
+<Proxy "balancer://mycluster">
+               BalancerMember http://<WebServer1-Private-IP-Address>:80 loadfactor=5 timeout=1
+               BalancerMember http://<WebServer2-Private-IP-Address>:80 loadfactor=5 timeout=1
+               ProxySet lbmethod=bytraffic
+               # ProxySet lbmethod=byrequests
+        </Proxy>
+
+        ProxyPreserveHost On
+        ProxyPass / balancer://mycluster/
+        ProxyPassReverse / balancer://mycluster/
+
+sudo systemctl restart apache2
+sudo systemctl status apache2
+ 
+
+# verify load balancing is working
+Access the browser via http://<load-balancer-ip>
+
+ 
+Verify on /var/log/httpd/access_log that apache load balancer are hitting both web server
+Sudo tail /var/log/httpd/access_log
+Web server 1
+ 
+Web Server 2
+ 
+# update hosts and load balancer config to resolve to hostname
+Sudo vi /etc/hosts
+Add the following records:
+172.31.26.234   web-server1
+172.31.17.49    web-server2
+sudo vi /etc/apache2/sites-available/000-default.conf # update ip to host
+sudo systemctl restart apache2
+sudo systemctl status apache2
+
+
+ 
+ 
+
+
+# verify apache load balancer able to resolve the name & are hitting web servers
+Curl http://web-server1
+Curl http://web-server2
+ 
+ 
+ 
 
