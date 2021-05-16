@@ -46,14 +46,21 @@ sudo vi /etc/apache2/sites-available/000-default.conf
 add the below configuration
 
 <Proxy "balancer://mycluster">
+
                BalancerMember http://<WebServer1-Private-IP-Address>:80 loadfactor=5 timeout=1
+               
                BalancerMember http://<WebServer2-Private-IP-Address>:80 loadfactor=5 timeout=1
+               
                ProxySet lbmethod=bytraffic
+               
                # ProxySet lbmethod=byrequests
+               
         </Proxy>
 
         ProxyPreserveHost On
+        
         ProxyPass / balancer://mycluster/
+        
         ProxyPassReverse / balancer://mycluster/
 
 sudo systemctl restart apache2
