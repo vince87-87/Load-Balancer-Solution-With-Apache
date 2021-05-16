@@ -73,7 +73,7 @@ sudo systemctl status apache2
 
 Access the browser via http://lb-ip-address
 
-![image](https://user-images.githubusercontent.com/49937302/118396026-22274480-b680-11eb-9132-3c86c5c7ef78.png)
+![image](https://user-images.githubusercontent.com/49937302/118396312-81398900-b681-11eb-81d7-282d47091154.png)
  
 Verify on /var/log/httpd/access_log that apache load balancer are hitting both web server
 
