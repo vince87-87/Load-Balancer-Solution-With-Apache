@@ -71,7 +71,7 @@ sudo systemctl status apache2
 
 # verify load balancing is working
 
-Access the browser via http://<load-balancer-ip>
+Access the browser via http://lb-ip-address
 
 ![image](https://user-images.githubusercontent.com/49937302/118396026-22274480-b680-11eb-9132-3c86c5c7ef78.png)
  
