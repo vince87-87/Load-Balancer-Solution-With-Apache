@@ -47,9 +47,9 @@ add the below configuration
 
 <Proxy "balancer://mycluster">
 
-               BalancerMember http://<WebServer1-Private-IP-Address>:80 loadfactor=5 timeout=1
+               BalancerMember http://172.31.26.234:80 loadfactor=5 timeout=1
                
-               BalancerMember http://<WebServer2-Private-IP-Address>:80 loadfactor=5 timeout=1
+               BalancerMember http://172.31.17.49:80 loadfactor=5 timeout=1
                
                ProxySet lbmethod=bytraffic
                
@@ -64,6 +64,7 @@ add the below configuration
         ProxyPassReverse / balancer://mycluster/
 
 sudo systemctl restart apache2
+
 sudo systemctl status apache2
 
 ![image](https://user-images.githubusercontent.com/49937302/118396015-13d92880-b680-11eb-92d4-d65139929f05.png)
