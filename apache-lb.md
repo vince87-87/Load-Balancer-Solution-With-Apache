@@ -114,7 +114,7 @@ Curl http://web-server1
 
 Curl http://web-server2
  
-![image](https://user-images.githubusercontent.com/49937302/118396091-631f5900-b680-11eb-8ef1-e3eed2621593.png)
+![image](https://user-images.githubusercontent.com/49937302/118396414-0624a280-b682-11eb-9bdd-b34b8687cdcd.png)
 
 ![image](https://user-images.githubusercontent.com/49937302/118396092-66b2e000-b680-11eb-968a-d115c2dba7f5.png)
 
